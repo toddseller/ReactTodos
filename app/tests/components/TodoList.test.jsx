@@ -12,7 +12,7 @@ describe('TodoList', () => {
     expect(TodoList).toExist()
   })
 
-  describe('render', () => {
+  describe('Test render function', () => {
     it('should render one Todo component for each todo item', () => {
       var todos = [{
         id: 1,

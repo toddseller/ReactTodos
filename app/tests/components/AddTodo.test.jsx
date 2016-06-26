@@ -11,7 +11,7 @@ describe('AddTodo', () => {
     expect(AddTodo).toExist()
   })
 
-  describe('onAddTodo', () => {
+  describe('Test onAddTodo function', () => {
     it('should call onAddTodo if valid data is entered', () => {
       var todoText = 'Get Mail'
       var spy = expect.createSpy()

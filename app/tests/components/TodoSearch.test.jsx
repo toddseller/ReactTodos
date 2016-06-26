@@ -11,7 +11,7 @@ describe('TodoSearch', () => {
     expect(TodoSearch).toExist()
   })
 
-  describe('onSearch', () => {
+  describe('Test onSearch function', () => {
     it('should call onSearch with entered input text', () => {
       var searchText = 'Dog'
       var spy = expect.createSpy()
