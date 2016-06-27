@@ -14,7 +14,7 @@ var Todo = React.createClass({
         timestamp = completedAt
       }
 
-      return message + moment.unix(timestamp).format('MMM Do, YYYY @ h:mm a')
+      return message + moment.unix(timestamp).format('ll @ LT')
     }
 
     return (

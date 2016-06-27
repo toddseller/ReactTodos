@@ -7,6 +7,11 @@
 
   p, input {
     margin: 0;
+    padding: 0;
+  }
+
+  p {
+    line-height: 1.4rem;
   }
 
   > :first-child {
@@ -20,6 +25,8 @@
 
 .todo__subtext {
   color: #999;
+  font-size: .8rem;
+  font-style: italic;
 }
 
 .todo-completed {
