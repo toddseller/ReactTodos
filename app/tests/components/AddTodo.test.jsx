@@ -4,6 +4,7 @@ var expect = require('expect')
 var $ = require('jquery')
 var TestUtils = require('react-addons-test-utils')
 
+import * as actions from 'actions'
 var {AddTodo} = require('AddTodo')
 
 describe('AddTodo', () => {
@@ -11,32 +12,27 @@ describe('AddTodo', () => {
     expect(AddTodo).toExist()
   })
 
-  describe('Test onAddTodo function', () => {
-    it('should dispatch ADD_TODO when valid data is entered', () => {
-      var todoText = 'Get Mail'
-      var action = {
-        type: 'ADD_TODO',
-        text: todoText
-      }
-      var spy = expect.createSpy()
-      var addTodo = TestUtils.renderIntoDocument(<AddTodo dispatch={spy}/>)
-      var $el = $(ReactDOM.findDOMNode(addTodo))
+  it('should dispatch ADD_TODO when valid data is entered', () => {
+    var todoText = 'Get Mail'
+    var action = actions.startAddTodo(todoText)
+    var spy = expect.createSpy()
+    var addTodo = TestUtils.renderIntoDocument(<AddTodo dispatch={spy}/>)
+    var $el = $(ReactDOM.findDOMNode(addTodo))
 
-      addTodo.refs.todoText.value = todoText
-      TestUtils.Simulate.submit($el.find('form')[0])
+    addTodo.refs.todoText.value = todoText
+    TestUtils.Simulate.submit($el.find('form')[0])
 
-      expect(spy).toHaveBeenCalledWith(action)
-    })
+    expect(spy).toHaveBeenCalledWith(action)
+  })
 
-    it('should not dispatch ADD_TODO when invalid data is entered', () => {
-      var spy = expect.createSpy()
-      var addTodo = TestUtils.renderIntoDocument(<AddTodo dispatch={spy}/>)
-      var $el = $(ReactDOM.findDOMNode(addTodo))
+  it('should not dispatch ADD_TODO when invalid data is entered', () => {
+    var spy = expect.createSpy()
+    var addTodo = TestUtils.renderIntoDocument(<AddTodo dispatch={spy}/>)
+    var $el = $(ReactDOM.findDOMNode(addTodo))
 
-      addTodo.refs.todoText.value = ''
-      TestUtils.Simulate.submit($el.find('form')[0])
+    addTodo.refs.todoText.value = ''
+    TestUtils.Simulate.submit($el.find('form')[0])
 
-      expect(spy).toNotHaveBeenCalled()
-    })
+    expect(spy).toNotHaveBeenCalled()
   })
 })
