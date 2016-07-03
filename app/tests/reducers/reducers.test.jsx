@@ -91,5 +91,37 @@ describe('Reducers', () => {
         expect(res[0].text).toEqual(todos[0].text)
       })
     })
+
+    describe('Test authReducer', () => {
+      it('should store user variables on LOGIN', () => {
+        const action = {
+          type: 'LOGIN',
+          uid: "h12yIhNRZAcwEOcMI7x8ad7C3Uf2",
+          displayName: "Bob Smith",
+          photoURL: "https://avatars.githubusercontent.com/u/15256915?v=3"
+        }
+        const res = reducers.authReducer(undefined, df(action))
+
+        expect(res).toEqual({
+          uid: action.uid,
+          displayName: action.displayName,
+          photoURL: action.photoURL
+        })
+      })
+
+      it('should wipe auth on LOGOUT', () => {
+        const authData = {
+          uid: "h12yIhNRZAcwEOcMI7x8ad7C3Uf2",
+          displayName: "Bob Smith",
+          photoURL: "https://avatars.githubusercontent.com/u/15256915?v=3"
+        }
+        const action = {
+          type: 'LOGOUT'
+        }
+        const res = reducers.authReducer(df(authData), df(action))
+
+        expect(res).toEqual({})
+      })
+    })
   })
 })

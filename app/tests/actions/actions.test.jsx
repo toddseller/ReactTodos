@@ -83,6 +83,27 @@ describe('Actions', () => {
     expect(res).toEqual(action)
   })
 
+  it('should generate login action object', () => {
+    const action = {
+      type: 'LOGIN',
+      uid: "h12yIhNRZAcwEOcMI7x8ad7C3Uf2",
+      displayName: "Bob Smith",
+      photoURL: "https://avatars.githubusercontent.com/u/15256915?v=3"
+    }
+    var res = actions.login(action.uid, action.displayName, action.photoURL)
+
+    expect(res).toEqual(action)
+  })
+
+  it('should generate logout action object', () => {
+    const action = {
+      type: 'LOGOUT'
+    }
+    var res = actions.logout()
+
+    expect(res).toEqual(action)
+  })
+
   describe('Tests with firebase todos', () => {
     var testTodoRef
 

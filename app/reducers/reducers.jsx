@@ -46,3 +46,18 @@ export var todosReducer = (state = [], action) => {
       return state
   }
 }
+
+export var authReducer = (state = {}, action) => {
+  switch (action.type) {
+    case 'LOGIN':
+      return {
+        uid: action.uid,
+        displayName: action.displayName,
+        photoURL: action.photoURL
+      }
+    case 'LOGOUT':
+      return {}
+    default:
+      return state
+  }
+}
